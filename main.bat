@@ -31,8 +31,20 @@
 ::
 ::
 ::978f952a14a936cc963da21a135fa983
+::Horno de Momos, escrito por luarpri, ah, ignora eso de arriba
 @echo off
 title Horno De Momos
+:inicio
+cls
+echo 1. instalar mod
+echo 2. copiar partida guardada
+echo 3. salir
+SET /P opcion=elige una opcion:
+if "%opcion%"=="1" goto instalar
+if "%opcion%"=="2" goto saves
+if "%opcion%"=="3" goto salir
+:instalar
+cls
 SET /P var=localizacion de mod:
 SET /P smc=directorio del juego:
 echo trabajando...
@@ -44,4 +56,16 @@ cd www
 xcopy *.* %smc%\www /s /e /y
 echo proceso terminado, ya deberias abrir el juego.
 pause
+goto inicio
+:saves
+xcopy "%userprofile%\AppData\Local/Super Momos Crushers" "%userprofile%\Documents/SMC" /s /e /y
+echo Respaldo creado en documentos con el nombre SMC
+pause
+goto inicio
+:restaurar
+echo es posible que tu partida se termine rompiendo si la sintaxis de archivos no es correcta, no me hago responsable de lo que ocurra.
+echo asegurate de que la carpeta SMC este en documentos, si no, no funcionara!
+pause
+goto inicio
+:salir
 exit
