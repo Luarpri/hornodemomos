@@ -1,7 +1,7 @@
 ::[Bat To Exe Converter]
 ::
 ::YAwzoRdxOk+EWAjk
-::fBw5plQjdCyDJGyX8VAjFBpGSQqDAE+1EbsQ5+n//NaXo04FWeMxNobY1dQ=
+::fBw5plQjdCyDJGyX8VAjFBpGSQqDAE+1EbsQ5+n//NaPrV8TW+Y6dYDW1afYdPgvpFf3Z5UR/1l1tvddQhJbcXI=
 ::YAwzuBVtJxjWCl3EqQJgSA==
 ::ZR4luwNxJguZRRnk
 ::Yhs/ulQjdF+5
@@ -32,6 +32,7 @@
 ::
 ::978f952a14a936cc963da21a135fa983
 ::Horno de Momos, escrito por luarpri, ah, ignora eso de arriba
+::posiblemente tenga que reescribir esto en python cuando salga la version de linux pero no lo ha hecho aun ¯\_(ツ)_/¯
 @echo off
 title Horno De Momos
 :inicio
@@ -58,14 +59,32 @@ echo proceso terminado, ya deberias abrir el juego.
 pause
 goto inicio
 :saves
-xcopy "%userprofile%\AppData\Local/Super Momos Crushers" "%userprofile%\Documents/SMC" /s /e /y
-echo Respaldo creado en documentos con el nombre SMC
+cls
+echo 1. respaldar partida guardada
+echo 2. restaurar partida guardada
+SET /P opcion2=elige una opcion:
+if "%opcion2%"=="1" goto respaldar
+if "%opcion2%"=="2" goto restaurar
+:respaldar
+cls
+xcopy "%userprofile%\AppData\Local/Super Momos Crushers" "%userprofile%\Documents/SMC%date%" /s /e /y
+echo Respaldo creado en documentos con el nombre SMC%date%
 pause
-goto inicio
 :restaurar
-echo es posible que tu partida se termine rompiendo si la sintaxis de archivos no es correcta, no me hago responsable de lo que ocurra.
-echo asegurate de que la carpeta SMC este en documentos, si no, no funcionara!
+:: bien!, funciona!, hurra! (en serio esto perfectamente pudo salir en la 1.1 pero me da igual :losquepocenelgamer:)
+cls
+echo ADVERTENCIA:
+echo Restaurar una partida guardada puede corromper los datos
+echo procede con precaucion.
+pause
+cls
+:: jeje, 67
+color 0 
+SET /P savefile=localizacion de la carpeta de respaldo (ejemplo: SMC06/07/2025/):
+xcopy "%savefile%" "%userprofile%\AppData\Local/Super Momos Crushers" /s /e /y
+echo Partida restaurada!
 pause
 goto inicio
 :salir
 exit
+:: maty, no, no va a salir smc humor 3, cierra la boca
