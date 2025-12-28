@@ -67,7 +67,7 @@ if "%opcion2%"=="1" goto respaldar
 if "%opcion2%"=="2" goto restaurar
 :respaldar
 cls
-xcopy "%userprofile%\AppData\Local/Super Momos Crushers" "%userprofile%\Documents/SMC%date%" /s /e /y
+xcopy "%userprofile%\AppData\Local/Super Momos Crushers/EBWebView\Default\IndexedDB" "%userprofile%\Documents/SMC%date%" /s /e /y
 echo Respaldo creado en documentos con el nombre SMC%date%
 pause
 :restaurar
@@ -81,7 +81,7 @@ cls
 :: jeje, 67
 color 0 
 SET /P savefile=localizacion de la carpeta de respaldo (ejemplo: SMC06/07/2025/):
-xcopy "%savefile%" "%userprofile%\AppData\Local/Super Momos Crushers" /s /e /y
+xcopy "%savefile%" "%userprofile%\AppData\Local/Super Momos Crushers/EBWebView\Default\IndexedDB" /s /e /y
 echo Partida restaurada!
 pause
 goto inicio
